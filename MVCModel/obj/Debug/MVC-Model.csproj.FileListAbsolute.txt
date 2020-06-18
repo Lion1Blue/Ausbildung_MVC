@@ -1,0 +1,32 @@
+C:\Users\lh80370\Desktop\WinFormMVC\MVCModal\bin\Debug\MVCModal.dll
+C:\Users\lh80370\Desktop\WinFormMVC\MVCModal\bin\Debug\MVCModal.pdb
+C:\Users\lh80370\Desktop\WinFormMVC\MVCModal\obj\Debug\MVC-Model.csprojAssemblyReference.cache
+C:\Users\lh80370\Desktop\WinFormMVC\MVCModal\obj\Debug\MVC-Model.csproj.CoreCompileInputs.cache
+C:\Users\lh80370\Desktop\WinFormMVC\MVCModal\obj\Debug\MVCModal.dll
+C:\Users\lh80370\Desktop\WinFormMVC\MVCModal\obj\Debug\MVCModal.pdb
+C:\Users\lh80370\Desktop\WinFormMVC - Fractional Arithmetic\MVCModal\bin\Debug\MVCModal.dll
+C:\Users\lh80370\Desktop\WinFormMVC - Fractional Arithmetic\MVCModal\bin\Debug\MVCModal.pdb
+C:\Users\lh80370\Desktop\WinFormMVC - Fractional Arithmetic\MVCModal\obj\Debug\MVC-Model.csprojAssemblyReference.cache
+C:\Users\lh80370\Desktop\WinFormMVC - Fractional Arithmetic\MVCModal\obj\Debug\MVC-Model.csproj.CoreCompileInputs.cache
+C:\Users\lh80370\Desktop\WinFormMVC - Fractional Arithmetic\MVCModal\obj\Debug\MVCModal.dll
+C:\Users\lh80370\Desktop\WinFormMVC - Fractional Arithmetic\MVCModal\obj\Debug\MVCModal.pdb
+C:\Users\lh80370\Desktop\WinFormMVC - Fractional Arithmetic - Kopie\MVCModel\bin\Debug\MVCModel.dll
+C:\Users\lh80370\Desktop\WinFormMVC - Fractional Arithmetic - Kopie\MVCModel\bin\Debug\MVCModel.pdb
+C:\Users\lh80370\Desktop\WinFormMVC - Fractional Arithmetic - Kopie\MVCModel\obj\Debug\MVC-Model.csprojAssemblyReference.cache
+C:\Users\lh80370\Desktop\WinFormMVC - Fractional Arithmetic - Kopie\MVCModel\obj\Debug\MVC-Model.csproj.CoreCompileInputs.cache
+C:\Users\lh80370\Desktop\WinFormMVC - Fractional Arithmetic - Kopie\MVCModel\obj\Debug\MVCModel.dll
+C:\Users\lh80370\Desktop\WinFormMVC - Fractional Arithmetic - Kopie\MVCModel\obj\Debug\MVCModel.pdb
+C:\Users\lh80370\Desktop\WinFormMVC - Fractional Arithmetic - Kopie - Kopie\MVCModel\bin\Debug\MVCModel.dll
+C:\Users\lh80370\Desktop\WinFormMVC - Fractional Arithmetic - Kopie - Kopie\MVCModel\bin\Debug\MVCModel.pdb
+C:\Users\lh80370\Desktop\WinFormMVC - Fractional Arithmetic - Kopie - Kopie\MVCModel\obj\Debug\MVC-Model.csprojAssemblyReference.cache
+C:\Users\lh80370\Desktop\WinFormMVC - Fractional Arithmetic - Kopie - Kopie\MVCModel\obj\Debug\MVC-Model.csproj.CoreCompileInputs.cache
+C:\Users\lh80370\Desktop\WinFormMVC - Fractional Arithmetic - Kopie - Kopie\MVCModel\obj\Debug\MVCModel.dll
+C:\Users\lh80370\Desktop\WinFormMVC - Fractional Arithmetic - Kopie - Kopie\MVCModel\obj\Debug\MVCModel.pdb
+C:\Users\lh80370\Desktop\WinFormMVC - Gesamte Anwendung - Kopie\MVCModel\bin\Debug\MVCModel.dll
+C:\Users\lh80370\Desktop\WinFormMVC - Gesamte Anwendung - Kopie\MVCModel\bin\Debug\MVCModel.pdb
+C:\Users\lh80370\Desktop\WinFormMVC - Gesamte Anwendung - Kopie\MVCModel\obj\Debug\MVC-Model.csprojAssemblyReference.cache
+C:\Users\lh80370\Desktop\WinFormMVC - Gesamte Anwendung - Kopie\MVCModel\obj\Debug\MVC-Model.csproj.CoreCompileInputs.cache
+C:\Users\lh80370\Desktop\WinFormMVC - Gesamte Anwendung - Kopie\MVCModel\obj\Debug\MVCModel.dll
+C:\Users\lh80370\Desktop\WinFormMVC - Gesamte Anwendung - Kopie\MVCModel\obj\Debug\MVCModel.pdb
+C:\Users\lh80370\Desktop\WinFormMVC - Gesamte Anwendung - Kopie\MVCModel\obj\Debug\WinFormMVC.Model.FloydCostTable.resources
+C:\Users\lh80370\Desktop\WinFormMVC - Gesamte Anwendung - Kopie\MVCModel\obj\Debug\MVC-Model.csproj.GenerateResource.cache
