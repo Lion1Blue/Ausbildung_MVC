@@ -24,7 +24,7 @@ namespace WinFormMVC.Model
         //checking if the two vectors have the right dimensions
         private bool dimensionsCheckedCrossProductAB(int ColumnsA, int ColumnsB, int RowsA, int RowsB)
         {
-            if ((ColumnsA == 2 && ColumnsB == 2) && (RowsA == 4 && RowsB == 4))
+            if ((ColumnsA == 1 && ColumnsB == 1) && (RowsA == 3 && RowsB == 3))
                 return true;
             else
                 return false;
