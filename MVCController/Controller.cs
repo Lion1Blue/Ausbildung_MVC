@@ -1,5 +1,8 @@
 ﻿using System;
+using System.ComponentModel;
 using System.Drawing;
+using System.Numerics;
+using System.Text;
 using System.Windows.Forms;
 using WinFormMVC.Model;
 
@@ -7,13 +10,12 @@ namespace WinFormMVC.Controller
 {
     public class Controller : IController
     {
-        IUsersView _view;
+        IUsersView view;
 
         public Controller(IUsersView view)
         {
-            _view = view;
-            view.SetController(this);
-            sortingAlgorithm = new SortingAlgorithm(this);
+            this.view = view;
+            this.view.SetController(this);
             function = new Function(this);
             PolynomialFunctionMakeGraph();
         }
@@ -29,15 +31,15 @@ namespace WinFormMVC.Controller
 
         private void FractionalArithmetic_UpdateViewWithFractionValues()
         {
-            _view.FractionA = fractionA;
-            _view.FractionB = fractionB;
-            _view.FractionResult = fractionResult;
+            view.FractionA = fractionA;
+            view.FractionB = fractionB;
+            view.FractionResult = fractionResult;
         }
 
         private void FractionalArithmetic_UpdateFractionWithViewValues()
         {
-            fractionA = _view.FractionA;
-            fractionB = _view.FractionB;
+            fractionA = view.FractionA;
+            fractionB = view.FractionB;
         }
 
         public void FractionalArithmetic_Operator(FractionalArithmeticEnum Operator)
@@ -98,35 +100,35 @@ namespace WinFormMVC.Controller
         #region Numbersystems
 
         //Numbersystems
-        string _numbersystemText;
+        string numbersystemText;
         Conversion conversion = new Conversion();
         enum OldSystem { dec, bin, hex };
         OldSystem oldSystem = OldSystem.dec;
 
         private void Numbersystems_UpdateViewValuesWithNumbersystemText()
         {
-            _view.NumbersystemText = _numbersystemText;
+            view.NumbersystemText = numbersystemText;
         }
 
         private void Numbersystems_UpdateNumbersystemTextWithViewValues()
         {
-            _numbersystemText = _view.NumbersystemText;
+            numbersystemText = view.NumbersystemText;
         }
 
         public void Decimal_Enter()
         {
             Numbersystems_UpdateNumbersystemTextWithViewValues();
 
-            if (_numbersystemText != "")
+            if (numbersystemText != "")
             {
                 if (oldSystem == OldSystem.bin)
                 {
-                    _numbersystemText = conversion.binaryToDecimal(_numbersystemText);
+                    numbersystemText = conversion.binaryToDecimal(numbersystemText);
 
                 }
                 else if (oldSystem == OldSystem.hex)
                 {
-                    _numbersystemText = conversion.hexadecimalToDecimal(_numbersystemText);
+                    numbersystemText = conversion.hexadecimalToDecimal(numbersystemText);
                 }
             }
             Numbersystems_UpdateViewValuesWithNumbersystemText();
@@ -136,25 +138,25 @@ namespace WinFormMVC.Controller
         {
             Numbersystems_UpdateNumbersystemTextWithViewValues();
 
-            if (_numbersystemText != "")
+            if (numbersystemText != "")
             {
                 if (oldSystem == OldSystem.dec)
                 {
-                    decimal check = Convert.ToDecimal(_numbersystemText);
+                    decimal check = Convert.ToDecimal(numbersystemText);
 
                     if (check > 18446744073709551615)
                     {
                         MessageBox.Show("overflow");
-                        _numbersystemText = "";
+                        numbersystemText = "";
                     }
                     else
                     {
-                        _numbersystemText = conversion.decimalToBinary(_numbersystemText);
+                        numbersystemText = conversion.decimalToBinary(numbersystemText);
                     }
                 }
                 else if (oldSystem == OldSystem.hex)
                 {
-                    _numbersystemText = conversion.hexadecimalToBinary(_numbersystemText);
+                    numbersystemText = conversion.hexadecimalToBinary(numbersystemText);
                 }
             }
             Numbersystems_UpdateViewValuesWithNumbersystemText();
@@ -164,25 +166,25 @@ namespace WinFormMVC.Controller
         {
             Numbersystems_UpdateNumbersystemTextWithViewValues();
 
-            if (_numbersystemText != "")
+            if (numbersystemText != "")
             {
                 if (oldSystem == OldSystem.dec)
                 {
-                    decimal check = Convert.ToDecimal(_numbersystemText);
+                    decimal check = Convert.ToDecimal(numbersystemText);
 
                     if (check > 18446744073709551615)
                     {
                         MessageBox.Show("overflow");
-                        _numbersystemText = "";
+                        numbersystemText = "";
                     }
                     else
                     {
-                        _numbersystemText = conversion.decimalToHexdecimal(_numbersystemText);
+                        numbersystemText = conversion.decimalToHexdecimal(numbersystemText);
                     }
                 }
                 else if (oldSystem == OldSystem.bin)
                 {
-                    _numbersystemText = conversion.binaryToHexdecimal(_numbersystemText);
+                    numbersystemText = conversion.binaryToHexdecimal(numbersystemText);
                 }
             }
             Numbersystems_UpdateViewValuesWithNumbersystemText();
@@ -215,16 +217,10 @@ namespace WinFormMVC.Controller
         DataGridView booleanAlgebraInput, booleanAlgebraOutput;
         public enum BooleanOperatorEnum { OR, AND, NOR, NAND, XOR }
 
-        private void BooleanAlgebra_UpdateViewWithBooleanAlgebraValues()
-        {
-            //_view.BooleanAlgebraInput   = booleanAlgebraInput;
-            _view.BooleanAlgebraOutput = booleanAlgebraOutput;
-        }
-
         private void BooleanAlgebra_UpdateBooleanAlgebraValuesWithView()
         {
-            booleanAlgebraInput = _view.BooleanAlgebraInput;
-            booleanAlgebraOutput = _view.BooleanAlgebraOutput;
+            booleanAlgebraInput = view.BooleanAlgebraInput;
+            booleanAlgebraOutput = view.BooleanAlgebraOutput;
         }
 
         //Setting Empty Cells in a DataGridView to Zero
@@ -349,7 +345,6 @@ namespace WinFormMVC.Controller
                         break;
                 }
             }
-            BooleanAlgebra_UpdateViewWithBooleanAlgebraValues();
         }
 
 
@@ -365,25 +360,25 @@ namespace WinFormMVC.Controller
 
         //Matrices
         DataGridView matrixA, matrixB, matrixGauß, matrixResult;
-        MathAlgorithm mathAlgorithm = new MathAlgorithm();
         public enum MatricesEnum { APlusB, AMinusB, ATimesB, AInverse, DotProduct, CrossProduct, Gauß, ReducedGauß }
 
         private void Matrices_UpdateViewWithMatrixValues()
         {
-            _view.MatrixB = matrixB;
-            _view.MatrixResult = matrixResult;
+            view.MatrixB = matrixB;
+            view.MatrixResult = matrixResult;
         }
 
         private void Matrices_UpdateMatricesWithViewValues()
         {
-            matrixA = _view.MatrixA;
-            matrixB = _view.MatrixB;
-            matrixGauß = _view.MatrixGauß;
-            matrixResult = _view.MatrixResult;
+            matrixA = view.MatrixA;
+            matrixB = view.MatrixB;
+            matrixGauß = view.MatrixGauß;
+            matrixResult = view.MatrixResult;
         }
 
         public void Matrices_Operator(MatricesEnum matricesEnum)
         {
+            MathAlgorithm mathAlgorithm = new MathAlgorithm();
             Matrices_UpdateMatricesWithViewValues();
             SettingEmptyCellsToZero(matrixA);
             SettingEmptyCellsToZero(matrixB);
@@ -471,9 +466,11 @@ namespace WinFormMVC.Controller
         //Copy Matrix into DataGridView
         private DataGridView CopyMatrixIntoDatagridview(decimal[,] matrix)
         {
-            DataGridView dataGridView = new DataGridView();
-            dataGridView.RowCount = (matrix.GetLength(0) + 1);
-            dataGridView.ColumnCount = (matrix.GetLength(1) + 1);
+            DataGridView dataGridView = new DataGridView
+            {
+                RowCount = (matrix.GetLength(0) + 1),
+                ColumnCount = (matrix.GetLength(1) + 1)
+            };
 
             for (int i = 0; i < matrix.GetLength(0); i++)
             {
@@ -503,43 +500,47 @@ namespace WinFormMVC.Controller
         int sortingMinvalue, sortingMaxValue, sortingColumns, sortingRows;
         DataGridView sortingTable;
         Random random = new Random();
-        SortingAlgorithm sortingAlgorithm;
         decimal[] array;
         public enum SortingAlgorithmEnum { Qick, Selection, Insertion, Bubble, Shaker };
 
         //RefreshSortingPictureBox
         public void RefreshPictureBoxSorting()
         {
-            _view.SortingPictureBox.Refresh();
+            view.SortingPictureBox.Refresh();
         }
 
         private void SortingAlgorithm_UpdateViewWithMatrixValues()
         {
             //_view.SortingTable      = sortingTable;
-            _view.SortingMaxValue = sortingMaxValue;
-            _view.SortingMinValue = sortingMinvalue;
-            _view.SortingRows = sortingRows;
-            _view.SortingColumns = sortingColumns;
+            view.SortingMaxValue = sortingMaxValue;
+            view.SortingMinValue = sortingMinvalue;
+            view.SortingRows = sortingRows;
+            view.SortingColumns = sortingColumns;
 
         }
 
         private void SortingAlgorithm_UpdateMatrixValuesWithView()
         {
-            sortingTable = _view.SortingTable;
-            sortingMaxValue = _view.SortingMaxValue;
-            sortingMinvalue = _view.SortingMinValue;
-            sortingRows = _view.SortingRows;
-            sortingColumns = _view.SortingColumns;
+            sortingTable = view.SortingTable;
+            sortingMaxValue = view.SortingMaxValue;
+            sortingMinvalue = view.SortingMinValue;
+            sortingRows = view.SortingRows;
+            sortingColumns = view.SortingColumns;
+        }
+
+        public void UpdateArraySortingAlgorithm()
+        {
+            SortingAlgorithm_UpdateMatrixValuesWithView();
+            array = CopyDataGridViewXIn1DimensionalMatrix(sortingTable, NullArray(sortingTable));
         }
 
         //Drawing Lines on pictureBox with values from SortingTable
         public void SortingDrawingLines(object sender, PaintEventArgs e)
         {
-            if (array != null)
+            if (array != null && array.Length != 0)
             {
                 Graphics g;
                 g = e.Graphics;
-                Random random = new Random();
                 Pen pen = new Pen(Color.DarkSlateGray, 1);
 
                 //g.Clear(Color.White);
@@ -555,11 +556,11 @@ namespace WinFormMVC.Controller
                 }
 
                 biggestNumberInArray = array[positionOfBiggestNumber];
-                int y = _view.SortingPictureBox.Height;
+                int y = view.SortingPictureBox.Height;
 
                 for (int i = 1; i < array.Length + 1; i++)
                 {
-                    int x = (int)(((double)(_view.SortingPictureBox.Width - 5) / array.Length) * i);
+                    int x = (int)(((double)(view.SortingPictureBox.Width - 5) / array.Length) * i);
                     g.DrawLine(pen, new Point(x, y), new Point(x, (int)(y - (y * 0.95m * (array[i - 1] / biggestNumberInArray)))));
                 }
             }
@@ -588,6 +589,7 @@ namespace WinFormMVC.Controller
         //Choosing the right Sorting-Algorithm
         public void SortingAlgorithm(SortingAlgorithmEnum sortingAlgorithmEnum)
         {
+            SortingAlgorithm sortingAlgorithm = new SortingAlgorithm(this);
             SortingAlgorithm_UpdateMatrixValuesWithView();
             array = CopyDataGridViewXIn1DimensionalMatrix(sortingTable, NullArray(sortingTable));
 
@@ -615,6 +617,14 @@ namespace WinFormMVC.Controller
 
             TransferArrayIntoDataGridView(array, sortingTable, NullArray(sortingTable));
             SortingAlgorithm_UpdateViewWithMatrixValues();
+        }
+
+        public void ReverseArray()
+        {
+            SortingAlgorithm sortingAlgorithm = new SortingAlgorithm(this);
+            array = CopyDataGridViewXIn1DimensionalMatrix(sortingTable, NullArray(sortingTable));
+            sortingAlgorithm.Reverse(array);
+            TransferArrayIntoDataGridView(array, sortingTable, NullArray(sortingTable));
         }
 
         //CopyDataGridViewXIn1-dimensionalMatrix
@@ -710,20 +720,22 @@ namespace WinFormMVC.Controller
 
         private void GetValuesFromView()
         {
-            function.DataGridView = _view.FunctionsGrid;
-            xmin = _view.FunctionsXMin;
-            xmax = _view.FunctionsXMax;
-            ymin = _view.FunctionsYMin;
-            ymax = _view.FunctionsYMax;
+            function.DataGridView = view.FunctionsGrid;
+            xmin = view.FunctionsXMin;
+            xmax = view.FunctionsXMax;
+            ymin = view.FunctionsYMin;
+            ymax = view.FunctionsYMax;
+            function.SleepTime = view.SleepTime;
         }
 
         private void SetValuesFromView()
         {
-            _view.FunctionsXMin = xmin;
-            _view.FunctionsXMax = xmax;
-            _view.FunctionsYMin = ymin;
-            _view.FunctionsYMax = ymax;
-            _view.FunctionsGraph.Image = bitmap;
+            view.FunctionsXMin = xmin;
+            view.FunctionsXMax = xmax;
+            view.FunctionsYMin = ymin;
+            view.FunctionsYMax = ymax;
+            view.FunctionsGraph.Image = bitmap;
+            RefreshPictureBoxFunction();
         }
 
         public void PolynomialFunctionMakeGraph()
@@ -760,6 +772,39 @@ namespace WinFormMVC.Controller
             function.CurrentFunctionType = functionType;
         }
 
+        public float NewtonAlgorithm()
+        {
+            function.ClearVisualizationPoints();
+            function.XStart = view.NewtonXStart;
+            return function.NewtonAlgorithm();
+        }
+
+        public void ClearVisualization()
+        {
+            function.ClearVisualizationPoints();
+            PolynomialFunctionMakeGraph();
+        }
+
+        public void RefreshPictureBoxFunction()
+        {
+            view.FunctionsGraph.Refresh();
+        }
+
+        public void SetNewtonZero(float newtonZero)
+        {
+            view.NewtonZero = newtonZero;
+        }
+
+        public void SetBackgroundWorker(BackgroundWorker backgroundWorker)
+        {
+            function.SetBackgroundWorker(backgroundWorker);
+        }
+
+        public Bitmap DrawVisualization()
+        {
+            return function.DrawVisualization();
+        }
+
         #endregion
         //==================================================================================================================\\
         //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\\
@@ -774,9 +819,9 @@ namespace WinFormMVC.Controller
         //Run Serach Algorithms
         public void GraphAlgorithmRun()
         {
-            Graph invokeGraph = _view.Graph;
+            Graph invokeGraph = view.Graph;
             RichTextBox invokeRTB = new RichTextBox();
-            uint? test = _view.StartValueGraphAlgorithm;
+            uint? test = view.StartValueGraphAlgorithm;
 
             if (test != 0 && invokeGraph.V - 1 >= test)
             {
@@ -818,7 +863,7 @@ namespace WinFormMVC.Controller
                     invokeRTB.Text = "Breadth First Search:\n>" + Graph.BFS(invokeGraph, value - 1);
                 }
 
-                _view.InvokeRTB = invokeRTB.Text;
+                view.InvokeRTB = invokeRTB.Text;
             }
 
             if (floydWarshallChecked)
@@ -857,6 +902,82 @@ namespace WinFormMVC.Controller
             floydWarshallChecked = false;
             dfsChecked = false;
             bfsChecked = true;
+        }
+
+        #endregion
+        //==================================================================================================================\\
+        //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\\
+        //==================================================================================================================\\
+        #region RSA Encryption
+        
+        private void UpdateWarningMessage(string message)
+        {
+            view.WarningMessage = message;
+            view.EncryptedMessage = string.Empty;
+            view.DecryptedMessage = string.Empty;
+        }
+
+        public void RSAEncryption()
+        {
+            BigInteger p = view.PrimeP, q = view.PrimeQ, e = view.E, d = 0;
+            view.WarningMessage = string.Empty;
+
+            if (p.ToString().Length > 7 || q.ToString().Length > 7 || e.ToString().Length > 7)
+            {
+                view.WarningMessage += "primenumbers with more than 7 Digits wont be checked,\nso your Encryption might be wrong";
+                try
+                {
+                    d = MyMath.ModInverse(e, MyMath.PhiFuncPrime(p, q));
+                }
+                catch (DivideByZeroException exception)
+                {
+                    view.WarningMessage += "\ntry different input values";
+                    return;
+                }
+            }
+            else
+            {
+                //Checking if p and q are prime numbers
+                if (!MyMath.IsPrime(p))
+                {
+                    UpdateWarningMessage("p is not prime");
+                    return;
+                }
+                if (!MyMath.IsPrime(q))
+                {
+                    UpdateWarningMessage("q is not prime");
+                    return;
+                }
+                //checkign if e is relative prime to p * q
+                if (!((1 < e && e < MyMath.PhiFuncPrime(p, q)) && MyMath.GCD(e, MyMath.PhiFuncPrime(p, q)) == 1))
+                {
+                    UpdateWarningMessage("e must be 1 < e < phi(p * q) and relative prime to p * q");
+                    return;
+                }
+                //
+                if (p * q < 128)
+                {
+                    UpdateWarningMessage("p * q must be bigger than 127");
+                    return;
+                }
+
+                d = MyMath.ModInverse(e, MyMath.PhiFuncPrime(p, q));
+            }
+
+
+            RSAEncryption encryption = new RSAEncryption();
+            encryption.P = p;
+            encryption.Q = q;
+            encryption.E = e;
+            encryption.D = d;
+            
+
+            view.PublicKey = $"({encryption.E}|{encryption.N})";
+            view.PrivateKey = $"({encryption.D}|{encryption.N})";
+
+            view.EncryptedMessage = encryption.Encryption(ASCIIEncoding.ASCII.GetBytes(view.Message));
+            view.DecryptedMessage = encryption.Decryption();
+
         }
 
         #endregion

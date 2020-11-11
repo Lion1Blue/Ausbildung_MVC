@@ -58,6 +58,7 @@
                     ggt = divisor;
                     divisor = rest;
                 } while (rest > 0);
+
                 numerator /= ggt;
                 denominator /= ggt;
 

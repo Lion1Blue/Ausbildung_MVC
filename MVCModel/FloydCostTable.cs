@@ -40,7 +40,7 @@ namespace WinFormMVC.Model
                         if (i == j)
                             e.Graphics.DrawString(string.Format("{0,2}", "-"), new Font("Consolas", 10, FontStyle.Regular), new SolidBrush(Color.Black), x + 2, y + 7);
 
-                        else if (Costs[i, j] == 999)
+                        else if (Costs[i, j] == short.MaxValue)
                             e.Graphics.DrawString(string.Format("{0,2}", "∞"), new Font("Consolas", 10, FontStyle.Regular), new SolidBrush(Color.Black), x + 2, y + 7);
 
                         else

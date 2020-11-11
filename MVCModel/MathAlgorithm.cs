@@ -24,7 +24,7 @@ namespace WinFormMVC.Model
         //checking if the two vectors have the right dimensions
         private bool dimensionsCheckedCrossProductAB(int ColumnsA, int ColumnsB, int RowsA, int RowsB)
         {
-            if ((ColumnsA == 1 && ColumnsB == 1) && (RowsA == 3 && RowsB == 3))
+            if ((ColumnsA == 2 && ColumnsB == 2) && (RowsA == 4 && RowsB == 4))
                 return true;
             else
                 return false;
@@ -302,7 +302,7 @@ namespace WinFormMVC.Model
                     //top right 
                     for (int startingRow = matrixA.GetLength(0) - 1; startingRow >= 0; startingRow--)
                     {
-                        //matrixAInverted right side
+                        //matrixAInverted right side = 1
                         for (int i = 0; i < matrixA.GetLength(0); i++)
                         {
                             if (Math.Round(matrixA[i, startingRow], 5) != 0)

@@ -181,7 +181,7 @@ namespace WinFormMVC.Model
             for (int i = 0; i < _Graph.V; i++)
                 for (int j = 0; j < _Graph.V; j++)
                     if (i != j && Adjacency[i, j] <= 0)
-                        Adjacency[i, j] = 999;
+                        Adjacency[i, j] = short.MaxValue;
 
             for (int k = 0; k < _Graph.V; k++)
                 for (int i = 0; i < _Graph.V; i++)
